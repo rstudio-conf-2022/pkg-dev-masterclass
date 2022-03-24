@@ -25,7 +25,7 @@ can remove these instructions from the README.
 
 ## Overview
 
-ABSTRACT
+In this two day masterclass, you’ll have the opportunity to dig deep in to package development. Across the two days, we’ll spend around 4 hours speaking about advanced package development topics, like writing testable code and producing error messages that spark joy. We’ll focus on cutting edge topics and tools that have significantly impacted the way we develop packages in the last couple of years. However, the majority of the time will be unstructured, so you can take what you’ve just learned about and apply it your package, in environment where you can get help and talk things through with the tidyverse team.
 
 ## Learning objectives
 
