@@ -1,4 +1,4 @@
-Package Development Masterclass
+PackageYou’ll learn from Hadley Wickham and five other members of the tidyverse team.Development Masterclass
 ================
 
 ### rstudio::conf 2022
