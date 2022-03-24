@@ -29,7 +29,7 @@ In this two day masterclass, you’ll have the opportunity to dig deep in to pac
 
 ## Learning objectives
 
-LEARNING_OBJECTIVES
+[ADD AN ITEMIZED LIST OF LEARNING OBJECTIVES.]
 
 ## Is this course for me?
 
