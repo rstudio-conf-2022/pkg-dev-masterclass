@@ -1,4 +1,4 @@
-PackageYou’ll learn from Hadley Wickham and five other members of the tidyverse team.Development Masterclass
+Package Development Masterclass
 ================
 
 ### rstudio::conf 2022
@@ -70,7 +70,7 @@ RSTUDIO.CLOUD ACCOUNT, ETC.\]
 
 ## Instructor
 
-\[ADD INSTRUCTOR BIO\]
+You’ll learn from Hadley Wickham and five other members of the tidyverse team.
 
 -----
 
