@@ -1,4 +1,4 @@
-WORKSHOP_TITLE
+Package Development Masterclass
 ================
 
 ### rstudio::conf 2022
