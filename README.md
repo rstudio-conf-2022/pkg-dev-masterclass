@@ -33,7 +33,7 @@ LEARNING_OBJECTIVES
 
 ## Is this course for me?
 
-THREE_QUESTIONS
+You should only take this course if you have already developed one or more packages. You should be familiar with the basic devtools/RStudio workflow (e.g. load_all(), roxygen2, and testthat), and should be familiar with the usethis package.
 
 ## Prework
 
