@@ -3,7 +3,7 @@ Package Development Masterclass
 
 ### rstudio::conf 2022
 
-by INSTRUCTOR_NAME
+by Hadley Wickham
 
 -----
 
