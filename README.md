@@ -1,79 +1,61 @@
-Package Development Masterclass
-================
+# Package Development Masterclass
 
 ### rstudio::conf 2022
 
 by Hadley Wickham
 
------
+------------------------------------------------------------------------
 
-INSTRUCTIONS FOR INSTRUCTORS: Please insert information about your
-workshop below. Then, add workshop content in the materials folder and
-link to each session’s materials from the schedule below. You are
-welcomed to add more rows to the schedule. We just ask that you take
-breaks at the specified times. Once you are done adding information, you
-can remove these instructions from the README.
+:spiral_calendar: July 25 and 26, 2022\
+:alarm_clock: 09:00 - 17:00\
+:hotel: **TBA**
 
------
-
-:spiral_calendar: July 25 and 26, 2022  
-:alarm_clock:     09:00 - 17:00  
-:hotel:           \[ADD ROOM\]  
-:writing_hand:    [rstd.io/conf](http://rstd.io/conf)
-
------
+------------------------------------------------------------------------
 
 ## Overview
 
-In this two day masterclass, you’ll have the opportunity to dig deep in to package development. Across the two days, we’ll spend around 4 hours speaking about advanced package development topics, like writing testable code and producing error messages that spark joy. We’ll focus on cutting edge topics and tools that have significantly impacted the way we develop packages in the last couple of years. However, the majority of the time will be unstructured, so you can take what you’ve just learned about and apply it your package, in environment where you can get help and talk things through with the tidyverse team.
+In this two day masterclass, you'll have the opportunity to dig deep in to package development.
+Across the two days, we'll spend around 4 hours speaking about advanced package development topics, like writing testable code and producing error messages that spark joy.
+We'll focus on cutting edge topics and tools that have significantly impacted the way we develop packages in the last couple of years.
+However, the majority of the time will be unstructured, so you can take what you've just learned about and apply it your package, in environment where you can get help and talk things through with the tidyverse team.
 
-## Learning objectives
+## Setup
 
-[ADD AN ITEMIZED LIST OF LEARNING OBJECTIVES.]
-
-## Is this course for me?
-
-You should only take this course if you have already developed one or more packages. You should be familiar with the basic devtools/RStudio workflow (e.g. load_all(), roxygen2, and testthat), and should be familiar with the usethis package.
-
-## Prework
-
-\[ADD INFORMATION YOU WANT LEARNERS TO HAVE / STEPS THEY WANT THEM TO
-COMPLETE PRIOR TO THE WORKSHOP. THIS COULD BE A LINK TO A THREAD ON
-RSTUDIO COMMUNITY, PACKAGE INSTALL INSTRUCTIONS, HOW TO GET AN
-RSTUDIO.CLOUD ACCOUNT, ETC.\]
+``` r
+install.packages("devtools")
+usethis::use_devtools()
+```
 
 ## Schedule
 
 ### Day 1
 
-| Time          | Activity         |
-| :------------ | :--------------- |
-| 09:00 - 10:30 | Session 1        |
-| 10:30 - 11:00 | *Coffee break*   |
-| 11:00 - 12:30 | Session 2        |
-| 12:30 - 13:30 | *Lunch break*    |
-| 13:30 - 15:00 | Session 3        |
-| 15:00 - 15:30 | *Coffee break*   |
-| 15:30 - 17:00 | Session 4        |
+| Time          | Activity                      | Instructor |
+|:--------------|:------------------------------|------------|
+| 09:00 - 10:30 | Introduction and check lists  | Hadley     |
+| 10:30 - 11:00 | *Coffee break*                |            |
+| 11:00 - 12:30 | Test tooling and design       | Jenny      |
+| 12:30 - 13:30 | *Lunch break*                 |            |
+| 13:30 - 15:00 | Writing great function docs   | Hadley     |
+| 15:00 - 15:30 | *Coffee break*                |            |
+| 15:30 - 17:00 | Making a website with pkgdown | Hadley     |
 
 ### Day 2
 
-| Time          | Activity         |
-| :------------ | :--------------- |
-| 09:00 - 10:30 | Session 1        |
-| 10:30 - 11:00 | *Coffee break*   |
-| 11:00 - 12:30 | Session 2        |
-| 12:30 - 13:30 | *Lunch break*    |
-| 13:30 - 15:00 | Session 3        |
-| 15:00 - 15:30 | *Coffee break*   |
-| 15:30 - 17:00 | Session 4        |
+| Time          | Activity                          | Instructor |
+|:--------------|:----------------------------------|------------|
+| 09:00 - 10:30 | Informative errors with rlang     | Lionel     |
+| 10:30 - 11:00 | *Coffee break*                    |            |
+| 11:00 - 12:30 | Snapshot testing with testthat 3e | Jenny      |
+| 12:30 - 13:30 | *Lunch break*                     |            |
+| 13:30 - 15:00 | Function design                   | Hadley     |
+| 15:00 - 15:30 | *Coffee break*                    |            |
+| 15:30 - 17:00 | Automated checking with GHA       | Gabor      |
 
 ## Instructor
 
-You’ll learn from Hadley Wickham and five other members of the tidyverse team.
+You'll learn from Hadley Wickham, Jenny Bryan, Lionel Henry, Gabor Csardi, and other members of the tidyverse team.
 
------
+------------------------------------------------------------------------
 
-![](https://i.creativecommons.org/l/by/4.0/88x31.png) This work is
-licensed under a [Creative Commons Attribution 4.0 International
-License](https://creativecommons.org/licenses/by/4.0/).
+![](https://i.creativecommons.org/l/by/4.0/88x31.png) This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
