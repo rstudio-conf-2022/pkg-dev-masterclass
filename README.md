@@ -26,6 +26,12 @@ install.packages("devtools")
 usethis::use_devtools()
 ```
 
+## Useful links
+
+-   [R packages book](https://r-pkgs.org/)
+-   [Common questions](https://bit.ly/3aoPD70) google doc
+-   [Chat on discord](https://rstd.io/discord)
+
 ## Schedule
 
 ### Day 1
