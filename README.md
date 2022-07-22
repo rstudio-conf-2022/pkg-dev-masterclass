@@ -48,19 +48,19 @@ usethis::use_devtools()
 
 ### Day 2
 
-| Time          | Activity                                  | Instructor |
-|:--------------|:------------------------------------------|------------|
-| 09:00 - 10:30 | Informative errors with rlang             | Lionel     |
-| 10:30 - 11:00 | *Coffee break*                            |            |
-| 11:00 - 12:30 | Snapshot testing with testthat 3e         | Jenny      |
-| 12:30 - 13:30 | *Lunch break*                             |            |
-| 13:30 - 15:00 | [Function design](materials/7-design.pdf) | Hadley     |
-| 15:00 - 15:30 | *Coffee break*                            |            |
-| 15:30 - 17:00 | Automated checking with GHA               | Gabor      |
+| Time          | Activity                                                     | Instructor |
+|:--------------|:-------------------------------------------------------------|------------|
+| 09:00 - 10:30 | Informative errors with rlang                                | Lionel     |
+| 10:30 - 11:00 | *Coffee break*                                               |            |
+| 11:00 - 12:30 | Snapshot testing with testthat 3e                            | Jenny      |
+| 12:30 - 13:30 | *Lunch break*                                                |            |
+| 13:30 - 15:00 | [Function design](materials/7-design.pdf)                    | Hadley     |
+| 15:00 - 15:30 | *Coffee break*                                               |            |
+| 15:30 - 17:00 | [Automated checking with GHA](materials/8-automated-gha.pdf) | Gábor      |
 
 ## Instructor
 
-You'll learn from Hadley Wickham, Jenny Bryan, Lionel Henry, Gabor Csardi, and other members of the tidyverse team.
+You'll learn from Hadley Wickham, Jenny Bryan, Lionel Henry, Gábor Csárdi, and other members of the tidyverse team.
 
 ------------------------------------------------------------------------
 
