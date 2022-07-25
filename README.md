@@ -40,7 +40,7 @@ usethis::use_devtools()
 |:---------------|:----------------------------------------|----------------|
 | 09:00 - 10:30 | [Introduction and check lists](materials/1-intro-checklists.pdf) | Hadley     |
 | 10:30 - 11:00 | *Coffee break*                                                   |            |
-| 11:00 - 12:30 | Test tooling and design                                          | Jenny      |
+| 11:00 - 12:30 | [Test tooling and design](materials/2-testing-1-tooling-and-design.pdf) | Jenny |
 | 12:30 - 13:30 | *Lunch break*                                                    |            |
 | 13:30 - 15:00 | [Writing great function docs](materials/3-function-docs.pdf)     | Hadley     |
 | 15:00 - 15:30 | *Coffee break*                                                   |            |
