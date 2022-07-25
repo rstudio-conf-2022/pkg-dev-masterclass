@@ -8,7 +8,7 @@ by Hadley Wickham
 
 :spiral_calendar: July 25 and 26, 2022\
 :alarm_clock: 09:00 - 17:00\
-:hotel: **TBA**
+:hotel: Chesapeake G+H+I
 
 ------------------------------------------------------------------------
 
@@ -36,20 +36,20 @@ usethis::use_devtools()
 
 ### Day 1
 
-| Time          | Activity                                                         | Instructor |
-|:---------------|:----------------------------------------|----------------|
-| 09:00 - 10:30 | [Introduction and check lists](materials/1-intro-checklists.pdf) | Hadley     |
-| 10:30 - 11:00 | *Coffee break*                                                   |            |
-| 11:00 - 12:30 | [Test tooling and design](materials/2-testing-1-tooling-and-design.pdf) | Jenny |
-| 12:30 - 13:30 | *Lunch break*                                                    |            |
-| 13:30 - 15:00 | [Writing great function docs](materials/3-function-docs.pdf)     | Hadley     |
-| 15:00 - 15:30 | *Coffee break*                                                   |            |
-| 15:30 - 17:00 | [Making a website with pkgdown](materials/4-website.pdf)         | Hadley     |
+| Time          | Activity                                                                | Instructor |
+|:----------------|:-------------------------------------|-----------------|
+| 09:00 - 10:30 | [Introduction and check lists](materials/1-intro-checklists.pdf)        | Hadley     |
+| 10:30 - 11:00 | *Coffee break*                                                          |            |
+| 11:00 - 12:30 | [Test tooling and design](materials/2-testing-1-tooling-and-design.pdf) | Jenny      |
+| 12:30 - 13:30 | *Lunch break*                                                           |            |
+| 13:30 - 15:00 | [Writing great function docs](materials/3-function-docs.pdf)            | Hadley     |
+| 15:00 - 15:30 | *Coffee break*                                                          |            |
+| 15:30 - 17:00 | [Making a website with pkgdown](materials/4-website.pdf)                | Hadley     |
 
 ### Day 2
 
 | Time          | Activity                                                     | Instructor |
-|:--------------|:-------------------------------------------------------------|------------|
+|:-------------|:-------------------------------------------|--------------|
 | 09:00 - 10:30 | Informative errors with rlang                                | Lionel     |
 | 10:30 - 11:00 | *Coffee break*                                               |            |
 | 11:00 - 12:30 | Snapshot testing with testthat 3e                            | Jenny      |
