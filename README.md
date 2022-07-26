@@ -52,7 +52,7 @@ usethis::use_devtools()
 |:-------------|:-------------------------------------------|--------------|
 | 09:00 - 10:30 | Informative errors with rlang                                | Lionel     |
 | 10:30 - 11:00 | *Coffee break*                                               |            |
-| 11:00 - 12:30 | Snapshot testing with testthat 3e                            | Jenny      |
+| 11:00 - 12:30 | [Snapshot testing with testthat 3e](materials/6-testing-2-snapshot-tests.key) | Jenny |
 | 12:30 - 13:30 | *Lunch break*                                                |            |
 | 13:30 - 15:00 | [Function design](materials/7-design.pdf)                    | Hadley     |
 | 15:00 - 15:30 | *Coffee break*                                               |            |
