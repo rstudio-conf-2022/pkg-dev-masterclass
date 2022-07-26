@@ -1,0 +1,525 @@
+---
+title: "Leave no error unkempt"
+author: "Lionel Henry"
+format:
+  revealjs:
+    theme: [beige, style.scss]
+    center: true
+    auto-stretch: false
+knitr:
+  opts_chunk:
+    collapse: true
+    comment: "#>"
+    echo: TRUE
+---
+
+```{r include=FALSE}
+library(tidyverse)
+```
+
+
+## Why take time for errors
+
+:::: columns
+::: {.column width="60%"}
+- Main way users interact with your software
+- Often an afterthought
+- Going beyond `stopifnot()`
+:::
+
+::: {.column width="40%"}
+![](error-window.png){}
+:::
+
+::::
+
+::: notes
+Package developers have to deal with lots of chores:
+- Unit tests
+- Documentation
+- Comments
+- Input checking
+
+Error reporting isn't a priority but is important nonetheless.
+:::
+
+---
+
+:::: columns
+::: {.column width="55%"}
+#### Principles of clarity
+
+1. Consistency
+1. Transparency
+1. Relevance
+1. Exhaustiveness
+1. Conciseness
+:::
+
+::: {.column width="45%"}
+#### Tools
+
+- Follow the style guide
+- Format with cli
+- Use error bullets
+- Pass error calls and arguments
+- Use chained errors
+:::
+::::
+
+::: {.notes}
+Consistency: Quickly recognise errors by scanning the ouptut.
+Transparency: Reveal exactly what went wrong (problematic type, value).
+Relevance: Where did the error fail.
+Exhaustiveness: Context is informative.
+Conciseness: Don't overwhelm. Helps quick recognition.
+:::
+
+
+# Follow the style guide
+
+## Follow the style guide
+
+::: {.callout-note appearance="simple" icon=false}
+::: my-smaller
+Principle of **consistency**
+:::
+:::
+
+- <https://style.tidyverse.org/error-messages.html>
+
+- State problem with "must" and "can't" phrases
+
+  - "Must" when you know what is a valid input
+  - "Can't" when you can't state exactly what is expected
+
+- Guiding error style is hard---still a WIP
+
+::: notes
+Examples:
+
+- `x` must be a character vector.
+- Can't find column `b` in data.
+:::
+
+
+# Format with cli
+
+## Format with cli
+
+- Most of the features presented here require `cli::cli_abort()`
+
+- Like `base::stop()` but with many additional features
+
+- To get help:
+
+  - Read the cli documentation at <https://cli.r-lib.org/>
+  - Consult `?rlang::abort`
+
+
+## glue interpolation
+
+cli embeds glue interpolation
+
+```{r error=TRUE}
+action <- "paint"
+what <- "canvas"
+how <- "in green"
+
+cli::cli_abort(paste0("Can't ", action, " ", what, " ", how))
+
+cli::cli_abort("Can't {action} {what} {how}.")
+```
+
+::: notes
+Interpolating encourages us to create dynamic rather than static messages, which in turn helps us create transparent rather than opaque error messages.
+:::
+
+---
+
+::: {.callout-note appearance="simple" icon=false}
+::: my-smaller
+Principle of **transparency** (reveal values/types)
+:::
+:::
+
+```{r error=TRUE}
+x <- 1:3
+cli::cli_abort("`x` must be <character>, not <{typeof(x)}>")
+```
+
+\
+
+::: my-smaller
+See also `obj_type_friendly()` in\
+<https://github.com/r-lib/rlang/blob/main/R/compat-obj-type.R>
+:::
+
+```{r include=FALSE}
+obj_type_friendly <- rlang:::obj_type_friendly
+```
+
+```{r error=TRUE}
+cli::cli_abort("`x` must be a character vector, not {obj_type_friendly(x)}.")
+```
+
+## cli inline markup
+
+- Apply style to part of the string
+- Curly brace syntax with dotted style name
+- Extensive theming mechanism
+
+```{r error=TRUE}
+cli::cli_abort("{.arg x} must be a path of the form {.path /home/foo}.")
+```
+
+::: {.callout-note appearance="simple" icon=false}
+::: my-smaller
+Principle of **consistency**
+:::
+:::
+
+---
+
+Markup and interpolation can be combined
+
+```{r error=TRUE}
+arg <- "x"
+path <- "/home/foo"
+
+cli::cli_abort("{.arg {arg}} must be a path of the form {.path {path}}.")
+```
+
+---
+
+Check out all the advanced cli features, e.g. pluralisation
+
+```{r error=TRUE}
+n_files <- 1
+
+cli::cli_abort("Can't supply {n_files} file{?s}.")
+```
+
+\
+
+```{r error=TRUE}
+n_files <- 2
+
+cli::cli_abort("Can't supply {n_files} file{?s}.")
+```
+
+
+# Use error bullets
+
+## Use error bullets
+
+:::: columns
+
+::: {.column width="60%"}
+Be *concise*:
+
+- Avoid paragraphs of text
+- Be straight to the point
+
+But be *exhaustive*:
+
+- Include contextual information
+- Point to external resources
+:::
+
+::: {.column width="40%"}
+::: {.callout-note appearance="simple" icon=false}
+::: my-smaller
+Principles:
+
+- **Concision**
+- **Exhaustiveness**
+:::
+:::
+:::
+
+::::
+
+---
+
+Contextual information:
+
+```{r, error=TRUE}
+starwars[, 1:25]
+```
+
+\
+
+Recommendation and external resource: \
+
+```{r include=FALSE}
+rlang::reset_message_verbosity("strict_lookup_var")
+```
+```{r message = TRUE}
+var <- "height"
+invisible(starwars |> select(var))
+```
+
+---
+
+Pass a named vector as error message to create bullets
+
+```{r error=TRUE}
+cli::cli_abort(c(
+  "My error message.",
+  "*" = "Bullet",
+  "i" = "Info bullet",
+  "x" = "Cross bullet",
+  "v" = "Check bullet"
+))
+```
+
+---
+
+Create named bullets programmatically with `set_names()`
+
+```{r include=FALSE}
+set.seed(5)
+```
+
+```{r error=TRUE}
+# Variable length character vector
+bullets <- letters[seq_len(sample(3:5, size = 1))]
+
+# Set their bullet names
+bullets <- set_names(bullets, "*")
+
+cli::cli_abort(c("My error message.", bullets))
+```
+
+
+# Pass error calls and arguments
+
+## Relevant context
+
+- Which function failed?
+- For which argument?
+
+::: {.callout-note appearance="simple" icon=false}
+::: my-smaller
+Principle of **relevance**
+:::
+:::
+
+
+## Error calls
+
+By default R reports the last function before failure
+
+```{r error=TRUE}
+f <- function() g()
+g <- function() h()
+h <- function() cli::cli_abort("Can't do that")
+
+f()
+```
+
+---
+
+But the last function is not always relevant
+
+```{r}
+my_function <- function(x) {
+  check_n_distinct(x, 2)
+}
+
+check_n_distinct <- function(x, n) {
+  actual <- dplyr::n_distinct(x)
+
+  if (actual != n) {
+    cli::cli_abort("Vector must have {n} distinct values, not {actual}.")
+  }
+}
+```
+
+\
+
+Should mention `my_function()`
+
+```{r error=TRUE}
+my_function(1:10)
+```
+
+---
+
+Pass `call = caller_env()` to `cli_abort()`
+
+```{r error=TRUE}
+check_n_distinct <- function(x, n, call = rlang::caller_env()) {
+  actual <- dplyr::n_distinct(x)
+
+  if (actual != n) {
+    cli::cli_abort(
+      "Vector must have {n} distinct values, not {actual}.",
+      call = call
+    )
+  }
+}
+
+my_function(1:10)
+```
+
+Now mentions `my_function()`\
+
+. . .
+
+What about the argument name?
+
+---
+
+- We'd like to mention the function argument
+- But `check_n_distinct()` doesn't know the name!
+- Use `caller_arg()` to find it
+
+```{r}
+check_n_distinct <- function(x,
+                             n,
+                             call = rlang::caller_env(),
+                             arg = rlang::caller_arg(x)) {
+  actual <- dplyr::n_distinct(x)
+
+  if (actual != n) {
+    cli::cli_abort(
+      "{.arg {arg}} must have {n} distinct values, not {actual}.",
+      call = call,
+      arg = arg
+    )
+  }
+}
+```
+
+---
+
+Now mentions both the function and argument
+
+```{r error=TRUE}
+my_function(1:10)
+```
+
+---
+
+Since `call` and `arg` are arguments, it's easy to wrap in another function:
+
+```{r error = TRUE}
+check_3_distinct <- function(x,
+                             call = rlang::caller_env(),
+                             arg = rlang::caller_arg(x)) {
+  check_n_distinct(x, n = 3, call = call, arg = arg)
+}
+
+my_function <- function(my_arg) {
+  check_3_distinct(my_arg)
+}
+
+my_function(1:10)
+```
+
+---
+
+Side benefits:
+
+- `call = caller_env()`:\
+  Error helpers are hidden from backtraces
+
+- `arg = caller_arg(x)`:\
+  Argument is highlighted in backtraces
+
+![](trace-drop-arg.png)
+
+---
+
+Compare to the full backtrace without highlight
+
+![](trace-no-drop.png)
+
+
+# Chained errors
+
+- Provide higher-level context
+- Show multiple errors, each with its own bullets
+
+::: {.callout-note appearance="simple" icon=false}
+::: my-smaller
+Principles:
+
+- **Exhaustiveness**
+- **Relevance**
+:::
+:::
+
+---
+
+Evaluation context:
+
+```r
+mtcars |>
+  group_by(cyl) |>
+  mutate(new = 1 + "")
+#> Error in `mutate()`:
+#> ! Problem while computing `new = 1 + ""`.
+#> ℹ The error occurred in group 1: cyl = 4.
+#> Caused by error in `1 + ""`:
+#> ! non-numeric argument to binary operator
+```
+
+\
+
+```r
+mtcars |>
+  ggplot() +
+  geom_point(aes(1 + ""))
+#> Error in `geom_point(aes(1 + ""))`:
+#> ! Problem while computing aesthetics.
+#> ℹ Error occurred in the 1st layer.
+#> Caused by error in `1 + ""`:
+#> ! non-numeric argument to binary operator
+```
+
+
+---
+
+Iteration context:
+
+```r
+list(1, "foo") |>
+  map(magrittr::add, 100)
+#> Error in `map()`:
+#> ! Problem while mapping element 2.
+#> Caused by error in `magrittr::add()`:
+#> ! non-numeric argument to binary operator
+```
+
+---
+
+Technical complications:\
+
+- Notion of error objects
+- Rethrowing errors with a parent
+
+To learn more about this:\
+<https://rlang.r-lib.org/reference/topic-error-chaining.html>
+
+
+# Resources
+
+---
+
+- The style guide\
+  <https://style.tidyverse.org/error-messages.html>
+
+- Inline markup with cli\
+  <https://cli.r-lib.org/reference/inline-markup.html>
+
+- Error bullets\
+  <https://cli.r-lib.org/reference/cli_bullets.html>
+
+- Error calls and arguments\
+  <https://rlang.r-lib.org/reference/topic-error-call.html>
+
+- Chained errors\
+  <https://rlang.r-lib.org/reference/topic-error-chaining.html>

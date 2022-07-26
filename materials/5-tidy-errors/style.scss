@@ -1,0 +1,10 @@
+/*-- scss:defaults --*/
+$font-family-sans-serif: sans-serif !default;
+
+$presentation-heading-font: sans-serif !default;
+$presentation-h1-font-size: 2em !default;
+$presentation-h2-font-size: 1.3em !default;
+
+.reveal .my-smaller {
+    font-size: 0.8em;
+}
